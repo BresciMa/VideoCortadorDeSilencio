@@ -160,10 +160,13 @@ namespace VideoCortadorDeSilencio
 
                     //FORÇA O CORTE PARA SILENCIO MAIOR QUE 1 SEGUNDO
                     if (silenceDuration > 1 && avancouCorte){
-                        Console.WriteLine("SS:" + Util.TimeFormat(silenceEnd) + " TO " + Util.TimeFormat(silenceStart) + ";"
-                            + "Corte:; " + (videoCounter).ToString("D8") + ";"
-                            + "Duração do Silêncio:;" + silenceDuration  + ";"
-                        );
+                        
+                        if(entrada.modoTeste){
+                            Console.WriteLine("SS:" + Util.TimeFormat(silenceEnd) + " TO " + Util.TimeFormat(silenceStart) + ";"
+                                + "Corte:; " + (videoCounter).ToString("D8") + ";"
+                                + "Duração do Silêncio:;" + silenceDuration  + ";"
+                            );
+                        }
 
                         corteStart = silenceEnd;
                         corteEnd = silenceStart;
@@ -229,7 +232,9 @@ namespace VideoCortadorDeSilencio
             validadorDeCorte = 0;
 
             foreach (Recorte recorte in objRecortes){
-                Console.WriteLine ( "[" + (novoContador++) + "/" + (videoCounter-1) + "] "  + recorte.nomeDoArquivo);
+                Console.WriteLine ( "[" + (novoContador++) + "/" + (videoCounter-1) + "] "  + 
+                    " Tamanho: " + (recorte.fim - recorte.inicio) + " - " +
+                    Util.TimeFormat(recorte.inicio) + " - " + Util.TimeFormat(recorte.fim));
 
                 if (recorte.inicio < validadorDeCorte){
                     Console.WriteLine ("ALERTA INCONSISTÊNCIA DE ARQUIVO");

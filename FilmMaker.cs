@@ -25,7 +25,7 @@ namespace VideoCortadorDeSilencio
             Silencedetect objSilence = new Silencedetect();
 
             // 1 - DETECTA O SILENCIO NO ARQUIVO
-            //objSilence.Detectar(Entrada, Saida, FFConfig);
+            objSilence.Detectar(Entrada, Saida, FFConfig);
 
             // 2 - ANALISA AS FALAS DENTRO DO ARQUIVO - GERA ARQUIVOS CORTADOS
             Processo proc = objSilence.Analisar(Entrada, Saida, FFConfig);

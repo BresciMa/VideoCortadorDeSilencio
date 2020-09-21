@@ -7,14 +7,13 @@ namespace VideoCortadorDeSilencio
 {
     class Program
     {
-
         static void Main(string[] args)
         {
-            String OriginalFile = @"C:\Users\bresciani\Desktop\Curta\Videos\20200903_135228-NapoleonHill-Formula-Da-Confianca_teste.mp4";
+            String OriginalFile = @"C:\Users\bresciani\Desktop\Curta\Videos\20200919_082015-critico-interno.mp4";
             ArquivoVideo Entrada = new ArquivoVideo();
 
-            // habilitando o modo teste
-            Entrada.modoTeste = true;
+            //habilitando o modo teste
+            //Entrada.modoTeste = true;
             //Entrada.modoDebug = true;
 
             //Entrada.pressetsFfmpeg ="unsharp=3:3:1,curves=psfile=/Users/bresciani/Desktop/Curta/Scripts/2020-09-03-escritorio-camiseta-azul.acv";
@@ -27,8 +26,8 @@ namespace VideoCortadorDeSilencio
             
             //AMBIENTE CONTROLADO
             //ALTO RUIDO
-            //Entrada.minDbDetect = "-22dB";
-            //Entrada.minSilenceDuration = "0.50";
+            Entrada.minDbDetect = "-22dB";
+            Entrada.minSilenceDuration = "0.50";
 
             /*
             [0] Arquivo Original 
