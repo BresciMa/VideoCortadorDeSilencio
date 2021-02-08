@@ -17,14 +17,13 @@ namespace VideoCortadorDeSilencio
 
             //Entrada.pressetsFfmpeg ="unsharp=3:3:1,curves=psfile=/Users/bresciani/Desktop/Curta/Scripts/2020-09-03-escritorio-camiseta-azul.acv";
 
-            Entrada.minDbDetect =  "-32dB";
+            Entrada.minDbDetect =  "-30dB";
             Entrada.minSilenceDuration = "0.34";
 
             Entrada.duracaoDeUmaVoz = 3; //0.20; 
             Entrada.softCut = 0;  //0.025;
             Entrada.videoBitRate = "10000k";
             Entrada.audioBitRate = "256k";
-
 
             
             //AMBIENTE CONTROLADO
