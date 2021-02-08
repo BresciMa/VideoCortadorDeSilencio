@@ -9,7 +9,7 @@ namespace VideoCortadorDeSilencio
             ArquivoVideo Saida = Entrada.GenerateArquivoSaida();
 
             //private string ffmpegProgram = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"library\ffmpeg\bin\ffmpeg.exe");
-            string ffmpegProgram = @"C:\Java\ffmpeg-4.1.1-win64-static\bin\ffmpeg.exe";
+            string ffmpegProgram = @"C:\Java\ffmpeg-4.3.2\bin\ffmpeg.exe";
 
             FFconfig FFConfig = new FFconfig();
             FFConfig.silenceDetect = @"C:\Users\bresciani\Desktop\Curta\Scripts\cut.txt";
@@ -25,7 +25,7 @@ namespace VideoCortadorDeSilencio
             Silencedetect objSilence = new Silencedetect();
 
             // 1 - DETECTA O SILENCIO NO ARQUIVO
-            //objSilence.Detectar(Entrada, Saida, FFConfig);
+            objSilence.Detectar(Entrada, Saida, FFConfig);
 
             // 2 - ANALISA AS FALAS DENTRO DO ARQUIVO - GERA ARQUIVOS CORTADOS
             Processo proc = objSilence.Analisar(Entrada, Saida, FFConfig);

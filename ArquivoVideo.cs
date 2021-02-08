@@ -5,15 +5,12 @@ using System.Text;
 
 namespace VideoCortadorDeSilencio
 {
-
     struct sArquivoOriginal {
 
     }
 
-
     public class ArquivoVideo
     {
-
         public string NomeArquivo { get; set; }
         public string pressetsFfmpeg { get; set; }
         public string videoBitRate { get; set; }

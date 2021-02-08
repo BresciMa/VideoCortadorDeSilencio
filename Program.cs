@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -7,23 +7,25 @@ namespace VideoCortadorDeSilencio
 {
     class Program
     {
-
         static void Main(string[] args)
         {
-            String OriginalFile = @"C:\Users\bresciani\Desktop\Curta\Videos\20200903_135228-NapoleonHill-Formula-Da-Confianca_teste.mp4";
+            String OriginalFile = @"C:\Users\bresciani\Desktop\Curta\Videos\MVI_0899-Good-Ohmens.MP4";
+            
             ArquivoVideo Entrada = new ArquivoVideo();
-
-            // habilitando o modo teste
-            Entrada.modoTeste = true;
-            //Entrada.modoDebug = true;
+            Entrada.modoTeste	= true;
+            Entrada.modoDebug	= true;
 
             //Entrada.pressetsFfmpeg ="unsharp=3:3:1,curves=psfile=/Users/bresciani/Desktop/Curta/Scripts/2020-09-03-escritorio-camiseta-azul.acv";
-            Entrada.minDbDetect =  "-30dB";
+
+            Entrada.minDbDetect =  "-32dB";
             Entrada.minSilenceDuration = "0.34";
+
             Entrada.duracaoDeUmaVoz = 3; //0.20; 
             Entrada.softCut = 0;  //0.025;
             Entrada.videoBitRate = "10000k";
             Entrada.audioBitRate = "256k";
+
+
             
             //AMBIENTE CONTROLADO
             //ALTO RUIDO
