@@ -7,7 +7,6 @@ namespace VideoCortadorDeSilencio
 {
     public class Processo
     {
-        
         public string multipleFiles { get ; set ;}
         private List<string> arquivos = new  List<string>();
         private StringBuilder stringBuilder = new StringBuilder();

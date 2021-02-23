@@ -31,7 +31,7 @@ namespace VideoCortadorDeSilencio
             Processo proc = objSilence.Analisar(Entrada, Saida, FFConfig);
 
             // 3 - CONVERTE TODOS OS ARQUIVOS CORTADOS EM UM SÓ ARQUIVO
-            if (!Entrada.modoTeste){
+            if (!Entrada.ModoTeste){
                 proc.Concatena(Entrada, Saida, FFConfig);
             }
 

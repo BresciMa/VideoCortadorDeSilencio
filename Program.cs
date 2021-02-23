@@ -9,19 +9,27 @@ namespace VideoCortadorDeSilencio
     {
         static void Main(string[] args)
         {
-            String OriginalFile = @"C:\Users\bresciani\Desktop\Curta\Videos\MVI_0899-Good-Ohmens.MP4";
-            
             ArquivoVideo Entrada = new ArquivoVideo();
-            Entrada.modoTeste	= true;
-            Entrada.modoDebug	= true;
+
+            String OriginalFile, arquivoControleDeRuido, arquivoSomTratado;
+            
+            OriginalFile = @"C:\Users\bresciani\Desktop\Curta\Videos\MVI_0901-4-Livros-Por-Ano.MP4";
+            arquivoControleDeRuido = @"C:\Users\bresciani\Desktop\Curta\Videos\MVI_0901-4-Livros-Por-Ano.MP4_audio.mp3";
+            arquivoSomTratado = ""; // @"C:\Users\bresciani\Desktop\Curta\Videos\MVI_0901-4-Livros-Por-Ano_audio_tratado.mp3";
+            
+            //Entrada.PreserveInitialSilence = true;
+            
+            //Entrada.ModoTeste	= true;
+            //Entrada.ModoDebug	= true;
+            Entrada.numeroCortesModoTeste = 2;
 
             //Entrada.pressetsFfmpeg ="unsharp=3:3:1,curves=psfile=/Users/bresciani/Desktop/Curta/Scripts/2020-09-03-escritorio-camiseta-azul.acv";
 
-            Entrada.minDbDetect =  "-30dB";
-            Entrada.minSilenceDuration = "0.34";
+            Entrada.minDbDetect =  "-26dB";
+            Entrada.minSilenceDuration = "0.50";
 
             Entrada.duracaoDeUmaVoz = 3; //0.20; 
-            Entrada.softCut = 0;  //0.025;
+            Entrada.softCut = 0.025;
             Entrada.videoBitRate = "10000k";
             Entrada.audioBitRate = "256k";
 
@@ -47,7 +55,7 @@ namespace VideoCortadorDeSilencio
             }
             if (args.Length >= 2 && args[1] != null) {
                 if (args[1].ToUpper() == "TESTE"){
-                    Entrada.modoTeste = true;
+                    Entrada.ModoTeste = true;
                 }else{
                     Entrada.pressetsFfmpeg = args[1];
                 }
@@ -74,6 +82,8 @@ namespace VideoCortadorDeSilencio
 
             FilmMaker fm = new FilmMaker();
             Entrada.NomeArquivo = OriginalFile;
+            Entrada.ArquivoAudioParaCorte = arquivoControleDeRuido;
+            Entrada.AudioTratado = arquivoSomTratado;
 
             fm.Start(Entrada);
 

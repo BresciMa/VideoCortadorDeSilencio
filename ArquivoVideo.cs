@@ -12,6 +12,10 @@ namespace VideoCortadorDeSilencio
     public class ArquivoVideo
     {
         public string NomeArquivo { get; set; }
+
+        public string ArquivoAudioParaCorte { get; set; }
+        public string AudioTratado { get; set; }
+
         public string pressetsFfmpeg { get; set; }
         public string videoBitRate { get; set; }
         public string audioBitRate { get; set; }
@@ -19,8 +23,13 @@ namespace VideoCortadorDeSilencio
         public string minSilenceDuration { get; set; }
         public Double duracaoDeUmaVoz { get; set; }
         public Double softCut { get; set; }
-        public bool modoTeste {get; set;}
-        public bool modoDebug { get; set; }
+        public bool ModoTeste {get; set;}
+        public bool ModoDebug { get; set; }
+
+        public int numeroCortesModoTeste { get; set; }
+
+        public bool PreserveInitialSilence {get; set;}
+
 
         public ArquivoVideo(){
 
@@ -29,8 +38,9 @@ namespace VideoCortadorDeSilencio
             duracaoDeUmaVoz = 0.10;
             softCut = 0.025;
 
-            modoDebug = false;
-            modoTeste = false;
+            ModoDebug = false;
+            ModoTeste = false;
+            PreserveInitialSilence = false;
 
         }
 
