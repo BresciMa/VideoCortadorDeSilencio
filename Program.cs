@@ -13,25 +13,25 @@ namespace VideoCortadorDeSilencio
 
             String OriginalFile, arquivoControleDeRuido, arquivoSomTratado;
             
-            OriginalFile = @"C:\Users\bresciani\Desktop\Curta\Videos\MVI_0901-4-Livros-Por-Ano.MP4";
-            arquivoControleDeRuido = @"C:\Users\bresciani\Desktop\Curta\Videos\MVI_0901-4-Livros-Por-Ano.MP4_audio.mp3";
+            OriginalFile = @"E:\VLOG\VLOG 001 - Medo\2022-08-17 19-10-00.mp4";
+            arquivoControleDeRuido = ""; //@"C:\Users\bresciani\Desktop\Curta\Videos\MVI_0901-4-Livros-Por-Ano.MP4_audio.mp3";
             arquivoSomTratado = ""; // @"C:\Users\bresciani\Desktop\Curta\Videos\MVI_0901-4-Livros-Por-Ano_audio_tratado.mp3";
             
             //Entrada.PreserveInitialSilence = true;
             
             //Entrada.ModoTeste	= true;
-            //Entrada.ModoDebug	= true;
-            Entrada.numeroCortesModoTeste = 2;
+            Entrada.ModoDebug	= true;
+            //Entrada.numeroCortesModoTeste = 6;
 
             //Entrada.pressetsFfmpeg ="unsharp=3:3:1,curves=psfile=/Users/bresciani/Desktop/Curta/Scripts/2020-09-03-escritorio-camiseta-azul.acv";
 
             Entrada.minDbDetect =  "-26dB";
-            Entrada.minSilenceDuration = "0.50";
+            Entrada.minSilenceDuration = "1";  //"0.50";
 
             Entrada.duracaoDeUmaVoz = 3; //0.20; 
             Entrada.softCut = 0.025;
-            Entrada.videoBitRate = "10000k";
-            Entrada.audioBitRate = "256k";
+            Entrada.videoBitRate = "6000k";
+            Entrada.audioBitRate = "320k";
 
             
             //AMBIENTE CONTROLADO

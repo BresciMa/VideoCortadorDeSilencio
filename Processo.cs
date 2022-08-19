@@ -10,9 +10,20 @@ namespace VideoCortadorDeSilencio
         public string multipleFiles { get ; set ;}
         private List<string> arquivos = new  List<string>();
         private StringBuilder stringBuilder = new StringBuilder();
+
+        private string RemoveWindowsDrivers(String caminho){
+            return caminho.Replace("E:","")
+            .Replace("C:","")
+            .Replace("D:","")
+            .Replace("e:","")
+            .Replace("d:","")
+            .Replace("c:","");
+        }
+
+
         public void ArquivoAdd(String arquivo){
                         
-            stringBuilder.Append("file "  + arquivo.Replace("\\", "/") + Environment.NewLine);
+            stringBuilder.Append("file "  + RemoveWindowsDrivers(arquivo).Replace("\\", "/") + Environment.NewLine);
             arquivos.Add(arquivo);
             
         }
@@ -24,8 +35,10 @@ namespace VideoCortadorDeSilencio
         }
         public void Concatena(ArquivoVideo entrada, ArquivoVideo saida, FFconfig configs){
 
-            string ffmpeg = " -f concat -safe 0 -i " + configs.pastaDeTrabalho + configs.nomeArquivoMergeTemporario + 
-                " -c copy -y " + saida.NomeArquivo + "_complete.mp4";
+            string finalFile = RemoveWindowsDrivers(saida.NomeArquivo);
+
+            string ffmpeg = " -f concat -safe 0 -i \"" + configs.nomeArquivoMergeTemporario + "\" " + 
+                " -c copy -y \"" + finalFile + "_complete.mp4\"";
 
             Console.WriteLine (ffmpeg);
             Console.WriteLine ("Iniciando o agrupamento.......");

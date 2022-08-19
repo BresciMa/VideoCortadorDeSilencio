@@ -8,6 +8,25 @@ namespace VideoCortadorDeSilencio
     public class Silencedetect
     {
 
+
+        private String AjustarNomeDoArquivo (String nome){
+
+            return nome.ToLower();
+
+            /*return nome.ToLower().Replace(" ", "")
+                .Replace("á","")
+                .Replace("é","")
+                .Replace("í","")
+                .Replace("ó","")
+                .Replace("ú","")
+                .Replace("ç","")
+                .Replace("ã","")
+                .Replace("õ","");
+            */
+
+        }
+
+
         public void Detectar(ArquivoVideo entrada, ArquivoVideo saida, FFconfig configs)
         {
 
@@ -19,7 +38,7 @@ namespace VideoCortadorDeSilencio
 
             string silencedetect = configs.silenceDetect.ToUpper().Replace("C:", "").Replace(@"\", "/");
 
-            string ffmpeg = " -i " + arquivoASerAnalizado + " -af \"silencedetect=n=" +
+            string ffmpeg = " -i \"" + arquivoASerAnalizado + "\" -af \"silencedetect=n=" +
                 entrada.minDbDetect + ":d=" +
                 entrada.minSilenceDuration +
                 ",ametadata=mode=print:file=" + silencedetect + "\" -f null - ";
@@ -151,9 +170,8 @@ namespace VideoCortadorDeSilencio
                             }
                             validadorDeCorte = corteEnd;
 
-
                             // MONTAGEM DO ARQUIVO A SER CORTADO
-                            arquivoSaida = saida.NomeArquivo + (videoCounter++).ToString("D8") + ".mp4";
+                            arquivoSaida = AjustarNomeDoArquivo(saida.NomeArquivo + (videoCounter++).ToString("D8") + ".mp4");
 
                             Recorte recorte = new Recorte();
                             recorte.nomeDoArquivo = arquivoSaida;
@@ -200,9 +218,6 @@ namespace VideoCortadorDeSilencio
                         realStartWithSilenceZero = false;
                     }
 
-
-
-
                     silenceDuration = tmpSilenceEnd - silenceStart;
 
                     //FORÇA O CORTE PARA SILENCIO MAIOR QUE 1 SEGUNDO
@@ -227,7 +242,7 @@ namespace VideoCortadorDeSilencio
                         }
                         validadorDeCorte = corteEnd;
 
-                        arquivoSaida = saida.NomeArquivo + (videoCounter++).ToString("D8") + ".mp4";
+                        arquivoSaida = AjustarNomeDoArquivo(saida.NomeArquivo + (videoCounter++).ToString("D8") + ".mp4");
 
                         Recorte recorte = new Recorte();
                         recorte.nomeDoArquivo = arquivoSaida;
@@ -268,7 +283,8 @@ namespace VideoCortadorDeSilencio
                 corteStart = silenceEnd;
                 corteEnd = -1;
 
-                arquivoSaida = saida.NomeArquivo + (videoCounter++).ToString("D8") + ".mp4";
+                arquivoSaida = AjustarNomeDoArquivo(saida.NomeArquivo + (videoCounter++).ToString("D8") + ".mp4");
+
                 Recorte recorte = new Recorte();
                 recorte.nomeDoArquivo = arquivoSaida;
                 recorte.inicio = corteStart;
@@ -317,12 +333,12 @@ namespace VideoCortadorDeSilencio
                     }
                 }
 
-                ffmpeg = " -i " + entrada.NomeArquivo;
+                ffmpeg = " -i \"" + entrada.NomeArquivo + "\"";
 
                 //NOVA ENTRADA PARA UM ARQUIVO EXTERNO DE AUDIO
                 if (entrada.AudioTratado != null && entrada.AudioTratado != "")
                 {
-                    ffmpeg += " -i " + entrada.AudioTratado;
+                    ffmpeg += " -i \"" + entrada.AudioTratado + "\"";
                 }
                 if (!String.IsNullOrEmpty(entrada.pressetsFfmpeg))
                 {
@@ -343,9 +359,9 @@ namespace VideoCortadorDeSilencio
                     ffmpeg += " -map 0:a ";
                 }
 
+                //ffmpeg += "-c:v libx264 ";
+                ffmpeg +=   "-c:v h264_qsv ";
 
-
-                ffmpeg += "-c:v libx264 ";
                 ffmpeg += "-b:v " + entrada.videoBitRate + " ";
                 ffmpeg += "-pix_fmt yuv420p -y ";
                 //ffmpeg += "-b:a " + entrada.audioBitRate + " ";
@@ -356,7 +372,7 @@ namespace VideoCortadorDeSilencio
                 {
                     ffmpeg += " -to " + Util.TimeFormat(recorte.fim);
                 }
-                ffmpeg += " " + recorte.nomeDoArquivo;
+                ffmpeg += " \"" + recorte.nomeDoArquivo + "\"";
 
                 if (!entrada.ModoTeste)
                 {
