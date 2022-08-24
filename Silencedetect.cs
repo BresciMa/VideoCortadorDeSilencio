@@ -87,6 +87,7 @@ namespace VideoCortadorDeSilencio
             List<Recorte> objRecortes = new List<Recorte>();
             double validadorDeCorte = 0;
 
+            String timeStamp = GetTimestamp(DateTime.Now);
 
             /*
             // LE O ARQUIVO DE CORTE E JOGA DENTRO DE UMA VARIAVEL
@@ -171,8 +172,8 @@ namespace VideoCortadorDeSilencio
                             validadorDeCorte = corteEnd;
 
                             // MONTAGEM DO ARQUIVO A SER CORTADO
-                            arquivoSaida = AjustarNomeDoArquivo(saida.NomeArquivo + (videoCounter++).ToString("D8") + ".mp4");
-
+                            arquivoSaida = configs.pastaDeTrabalho + timeStamp +  " " + (videoCounter++).ToString("D8") + ".mp4";
+                              
                             Recorte recorte = new Recorte();
                             recorte.nomeDoArquivo = arquivoSaida;
                             recorte.inicio = corteStart;
@@ -242,7 +243,9 @@ namespace VideoCortadorDeSilencio
                         }
                         validadorDeCorte = corteEnd;
 
-                        arquivoSaida = AjustarNomeDoArquivo(saida.NomeArquivo + (videoCounter++).ToString("D8") + ".mp4");
+                        //arquivoSaida = AjustarNomeDoArquivo(saida.NomeArquivo + (videoCounter++).ToString("D8") + ".mp4");
+                        arquivoSaida = configs.pastaDeTrabalho + timeStamp +  " " + (videoCounter++).ToString("D8") + ".mp4";
+
 
                         Recorte recorte = new Recorte();
                         recorte.nomeDoArquivo = arquivoSaida;
@@ -283,7 +286,8 @@ namespace VideoCortadorDeSilencio
                 corteStart = silenceEnd;
                 corteEnd = -1;
 
-                arquivoSaida = AjustarNomeDoArquivo(saida.NomeArquivo + (videoCounter++).ToString("D8") + ".mp4");
+                //arquivoSaida = AjustarNomeDoArquivo(saida.NomeArquivo + (videoCounter++).ToString("D8") + ".mp4");
+                arquivoSaida = configs.pastaDeTrabalho + timeStamp +  " " + (videoCounter++).ToString("D8") + ".mp4";
 
                 Recorte recorte = new Recorte();
                 recorte.nomeDoArquivo = arquivoSaida;
@@ -394,13 +398,21 @@ namespace VideoCortadorDeSilencio
 
             }
 
-            using (StreamWriter outputFile = new StreamWriter(Path.Combine(configs.pastaDeTrabalho, configs.nomeArquivoMergeTemporario), false))
+            using (StreamWriter outputFile = new StreamWriter(Path.Combine(configs.pastaDeTrabalho, configs.nomeArquivoMergeTemporario), true))
             {
                 outputFile.WriteLine(proc.getArquivoMerge());
             }
             Console.WriteLine("Duração do Novo Arquivo: " + duracaoDoClipStr);
             return proc;
         }
+
+
+
+        public static String GetTimestamp(DateTime value)
+        {
+            return value.ToString("yyyyMMddHHmmssffff");
+        }
+
 
 
     }

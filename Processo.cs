@@ -21,9 +21,16 @@ namespace VideoCortadorDeSilencio
         }
 
 
+        public void ArquivosAdd(List<string> arquivos){
+            foreach(String arquivo in arquivos){
+                this.ArquivoAdd(arquivo);
+            }
+        }
+
+
         public void ArquivoAdd(String arquivo){
                         
-            stringBuilder.Append("file "  + RemoveWindowsDrivers(arquivo).Replace("\\", "/") + Environment.NewLine);
+            stringBuilder.Append("file '"  + RemoveWindowsDrivers(arquivo).Replace("\\", "/") + "'" + Environment.NewLine);
             arquivos.Add(arquivo);
             
         }
@@ -54,6 +61,9 @@ namespace VideoCortadorDeSilencio
             {
                 File.Delete(f);
             }
+
+            File.Delete(configs.nomeArquivoMergeTemporario);
+
         }
     }
 }

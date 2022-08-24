@@ -13,7 +13,7 @@ namespace VideoCortadorDeSilencio
 
             String OriginalFile, arquivoControleDeRuido, arquivoSomTratado;
             
-            OriginalFile = @"E:\VLOG\VLOG 001 - Medo\2022-08-17 19-10-00.mp4";
+            OriginalFile = @"E:\VLOG\VLOG 004 - Indiferenca\";
             arquivoControleDeRuido = ""; //@"C:\Users\bresciani\Desktop\Curta\Videos\MVI_0901-4-Livros-Por-Ano.MP4_audio.mp3";
             arquivoSomTratado = ""; // @"C:\Users\bresciani\Desktop\Curta\Videos\MVI_0901-4-Livros-Por-Ano_audio_tratado.mp3";
             
@@ -22,7 +22,6 @@ namespace VideoCortadorDeSilencio
             //Entrada.ModoTeste	= true;
             Entrada.ModoDebug	= true;
             //Entrada.numeroCortesModoTeste = 6;
-
             //Entrada.pressetsFfmpeg ="unsharp=3:3:1,curves=psfile=/Users/bresciani/Desktop/Curta/Scripts/2020-09-03-escritorio-camiseta-azul.acv";
 
             Entrada.minDbDetect =  "-26dB";
@@ -33,7 +32,6 @@ namespace VideoCortadorDeSilencio
             Entrada.videoBitRate = "6000k";
             Entrada.audioBitRate = "320k";
 
-            
             //AMBIENTE CONTROLADO
             //ALTO RUIDO
             //Entrada.minDbDetect = "-22dB";
