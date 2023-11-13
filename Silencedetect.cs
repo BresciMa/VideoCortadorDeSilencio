@@ -309,8 +309,20 @@ namespace VideoCortadorDeSilencio
             int novoContador = 1;
             validadorDeCorte = 0;
 
+            StringBuilder sbPremiere = new StringBuilder();
+
             foreach (Recorte recorte in objRecortes)
             {
+                
+                double _ini1 =   recorte.inicio;// - 0.021333;
+                double _fim1 =   recorte.fim; // + 0.021333;
+
+
+                //GERANDO O PADRÃO PARA SER IMPORTADO NO PREMIERE                
+                sbPremiere.Append ("[" +String.Format( "{0:0.000}", _ini1).Replace(",", ".") + ", " + String.Format( "{0:0,0.000}", _fim1).Replace(",", ".")  + "], " );
+                //sbPremiere.Append ("[" +  recorte.inicio.ToString().Replace(",", ".") + ", " + recorte.fim.ToString().Replace(",", ".")  + "], " );
+
+
                 Console.WriteLine("[" + (novoContador++) + "/" + (videoCounter - 1) + "] " +
                     " Tamanho: " + (recorte.fim - recorte.inicio) + " - " +
                     Util.TimeFormat(recorte.inicio) + " - " + Util.TimeFormat(recorte.fim));
@@ -397,6 +409,10 @@ namespace VideoCortadorDeSilencio
                 }
 
             }
+
+
+            Console.WriteLine (sbPremiere.ToString());
+
 
             using (StreamWriter outputFile = new StreamWriter(Path.Combine(configs.pastaDeTrabalho, configs.nomeArquivoMergeTemporario), true))
             {

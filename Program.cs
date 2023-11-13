@@ -13,23 +13,23 @@ namespace VideoCortadorDeSilencio
 
             String OriginalFile, arquivoControleDeRuido, arquivoSomTratado;
             
-            OriginalFile = @"E:\VLOG\VLOG 004 - Indiferenca\";
+            OriginalFile = "E:\\Gravações\\2023\\Março\\MD 016 - Por que ler-2 - 2023-03-06 19-54-48.mp4";
             arquivoControleDeRuido = ""; //@"C:\Users\bresciani\Desktop\Curta\Videos\MVI_0901-4-Livros-Por-Ano.MP4_audio.mp3";
             arquivoSomTratado = ""; // @"C:\Users\bresciani\Desktop\Curta\Videos\MVI_0901-4-Livros-Por-Ano_audio_tratado.mp3";
             
-            //Entrada.PreserveInitialSilence = true;
+            Entrada.PreserveInitialSilence = true;
             
-            //Entrada.ModoTeste	= true;
+            Entrada.ModoTeste	= true;
             Entrada.ModoDebug	= true;
             //Entrada.numeroCortesModoTeste = 6;
             //Entrada.pressetsFfmpeg ="unsharp=3:3:1,curves=psfile=/Users/bresciani/Desktop/Curta/Scripts/2020-09-03-escritorio-camiseta-azul.acv";
 
-            Entrada.minDbDetect =  "-26dB";
-            Entrada.minSilenceDuration = "1";  //"0.50";
+            Entrada.minDbDetect =  "-42dB";
+            Entrada.minSilenceDuration = "0.30";  //"0.50";
 
-            Entrada.duracaoDeUmaVoz = 3; //0.20; 
-            Entrada.softCut = 0.025;
-            Entrada.videoBitRate = "6000k";
+            Entrada.duracaoDeUmaVoz = 0.5; //0.20; 
+            Entrada.softCut = 0.100;
+            Entrada.videoBitRate = "10000k";
             Entrada.audioBitRate = "320k";
 
             //AMBIENTE CONTROLADO
