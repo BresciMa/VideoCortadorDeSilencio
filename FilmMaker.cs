@@ -10,11 +10,11 @@ namespace VideoCortadorDeSilencio
             ArquivoVideo Saida = Entrada.GenerateArquivoSaida();
 
             //private string ffmpegProgram = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"library\ffmpeg\bin\ffmpeg.exe");
-            string ffmpegProgram = @"E:\Java\ffmpeg-5.1.2-full_build\bin\ffmpeg.exe";
+            string ffmpegProgram = @"C:\Java\ffmpeg-5.1.2-full_build\bin\ffmpeg.exe";
 
             FFconfig FFConfig = new FFconfig();
             FFConfig.silenceDetect = @"\TMP\CUT.txt";
-            FFConfig.pastaDeTrabalho = @"E:\TMP\";
+            FFConfig.pastaDeTrabalho = @"C:\TMP\";
             FFConfig.nomeArquivoMergeTemporario = @"\TMP\arquivoconcatenacao.txt";
             FFConfig.ffmpegProgram = ffmpegProgram;
 

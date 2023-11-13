@@ -319,7 +319,8 @@ namespace VideoCortadorDeSilencio
 
 
                 //GERANDO O PADRÃO PARA SER IMPORTADO NO PREMIERE                
-                sbPremiere.Append ("[" +String.Format( "{0:0.000}", _ini1).Replace(",", ".") + ", " + String.Format( "{0:0,0.000}", _fim1).Replace(",", ".")  + "], " );
+                sbPremiere.Append ("[" +String.Format( "{0:0.000}", _ini1).Replace(",", ".") + ", " + 
+                String.Format( "{0:0.000}", _fim1).Replace(",", ".")  + "], " );
                 //sbPremiere.Append ("[" +  recorte.inicio.ToString().Replace(",", ".") + ", " + recorte.fim.ToString().Replace(",", ".")  + "], " );
 
 

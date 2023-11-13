@@ -13,7 +13,7 @@ namespace VideoCortadorDeSilencio
 
             String OriginalFile, arquivoControleDeRuido, arquivoSomTratado;
             
-            OriginalFile = "E:\\Gravações\\2023\\Março\\MD 016 - Por que ler-2 - 2023-03-06 19-54-48.mp4";
+            OriginalFile = @"C:\Gravações\2023\Novembro\13 habitos que revelam personalidade - 2023-11-07 15-16-52.mkv_RAW.mp4";
             arquivoControleDeRuido = ""; //@"C:\Users\bresciani\Desktop\Curta\Videos\MVI_0901-4-Livros-Por-Ano.MP4_audio.mp3";
             arquivoSomTratado = ""; // @"C:\Users\bresciani\Desktop\Curta\Videos\MVI_0901-4-Livros-Por-Ano_audio_tratado.mp3";
             
@@ -24,11 +24,11 @@ namespace VideoCortadorDeSilencio
             //Entrada.numeroCortesModoTeste = 6;
             //Entrada.pressetsFfmpeg ="unsharp=3:3:1,curves=psfile=/Users/bresciani/Desktop/Curta/Scripts/2020-09-03-escritorio-camiseta-azul.acv";
 
-            Entrada.minDbDetect =  "-42dB";
-            Entrada.minSilenceDuration = "0.30";  //"0.50";
+            Entrada.minDbDetect =  "-38dB";
+            Entrada.minSilenceDuration = "0.30";  //"0.30";  //"0.50";
 
-            Entrada.duracaoDeUmaVoz = 0.5; //0.20; 
-            Entrada.softCut = 0.100;
+            Entrada.duracaoDeUmaVoz = 0.50; //0.20; 
+            Entrada.softCut = 0.050;  //0.100
             Entrada.videoBitRate = "10000k";
             Entrada.audioBitRate = "320k";
 
